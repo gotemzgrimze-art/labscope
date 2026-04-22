@@ -1,0 +1,26 @@
+events: 8
+unique_devices: 2
+unique_event_types: 3
+warnings_or_errors: 2
+out_of_order_timestamps: 0
+active_span_seconds: 160
+first_seen: 2026-04-22T08:30:00+00:00
+last_seen: 2026-04-22T08:32:40+00:00
+devices:
+  - esp32-lab-01: 5
+  - esp32-lab-02: 3
+events_by_type:
+  - boot: 2
+  - status: 2
+  - wifi_scan: 4
+events_by_severity:
+  - error: 1
+  - info: 4
+  - notice: 2
+  - warn: 1
+events_by_channel:
+  - 1: 1
+  - 11: 1
+  - 6: 2
+  - n/a: 4
+

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>labscope report</title>
+  <style>
+    :root {
+      --bg: #f3f7fb;
+      --panel: #ffffff;
+      --panel-alt: #eef4fb;
+      --border: #d8e0ea;
+      --ink: #102033;
+      --muted: #4c6177;
+      --accent: #0f766e;
+      --accent-soft: #d6f5ef;
+      --warn: #b45309;
+      --error: #991b1b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem;
+      background:
+        radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 26rem),
+        linear-gradient(180deg, #f8fbfe 0%, var(--bg) 100%);
+      color: var(--ink);
+      font-family: 'Iosevka', 'IBM Plex Mono', ui-monospace, monospace;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1, h2 {
+      margin: 0 0 0.5rem 0;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .hero {
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), rgba(255, 255, 255, 0.95));
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--panel);
+      padding: 1rem 1.1rem;
+      box-shadow: 0 10px 30px rgba(16, 32, 51, 0.05);
+    }
+    .stat {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .list {
+      display: grid;
+      gap: 0.45rem;
+      padding-left: 1rem;
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.8rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+    th {
+      background: var(--panel-alt);
+    }
+    code {
+      padding: 0.15rem 0.35rem;
+      border-radius: 8px;
+      background: var(--accent-soft);
+    }
+    .meta-chip {
+      display: inline-block;
+      margin: 0 0.35rem 0.35rem 0;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      background: var(--panel-alt);
+      border: 1px solid var(--border);
+    }
+    .empty {
+      padding: 1rem 0;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <h1>labscope report</h1>
+      <p>Passive session inventory for device telemetry and defensive lab workflows.</p>
+    </section>
+
+    <section class="grid">
+      <div class="card"><div class="stat">8</div><p>Total events</p></div>
+      <div class="card"><div class="stat">2</div><p>Devices</p></div>
+      <div class="card"><div class="stat">3</div><p>Event types</p></div>
+      <div class="card"><div class="stat">2</div><p>Warn/Error events</p></div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Window</h2>
+        <p>first: 2026-04-22T08:30:00+00:00</p>
+        <p>last: 2026-04-22T08:32:40+00:00</p>
+        <p>active span: 160 seconds</p>
+        <p>out-of-order timestamps: 0</p>
+      </div>
+      <div class="card">
+        <h2>Devices</h2>
+        <ul class="list"><li><code>esp32-lab-01</code>: 5</li><li><code>esp32-lab-02</code>: 3</li></ul>
+      </div>
+      <div class="card">
+        <h2>Event Types</h2>
+        <ul class="list"><li><code>boot</code>: 2</li><li><code>status</code>: 2</li><li><code>wifi_scan</code>: 4</li></ul>
+      </div>
+      <div class="card">
+        <h2>Severity</h2>
+        <ul class="list"><li><code>error</code>: 1</li><li><code>info</code>: 4</li><li><code>notice</code>: 2</li><li><code>warn</code>: 1</li></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Channels</h2>
+      <ul class="list"><li><code>1</code>: 1</li><li><code>11</code>: 1</li><li><code>6</code>: 2</li><li><code>n/a</code>: 4</li></ul>
+    </section>
+
+    <section class="card">
+      <h2>Raw Events</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Severity</th>
+            <th>Device</th>
+            <th>Event</th>
+            <th>Channel</th>
+            <th>Signal</th>
+            <th>Message</th>
+            <th>Tags</th>
+            <th>Metadata</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2026-04-22T08:30:00+00:00</td><td>notice</td><td>esp32-lab-01</td><td>boot</td><td>-</td><td>-</td><td>Boot complete</td><td>system</td><td><span class="meta-chip">firmware=0.1.0</span> <span class="meta-chip">source=serial</span></td></tr>
+<tr><td>2026-04-22T08:30:10+00:00</td><td>info</td><td>esp32-lab-01</td><td>wifi_scan</td><td>1</td><td>-49</td><td>Observed 3 nearby AP beacons</td><td>scan, wifi</td><td><span class="meta-chip">source=serial</span></td></tr>
+<tr><td>2026-04-22T08:30:24+00:00</td><td>info</td><td>esp32-lab-01</td><td>wifi_scan</td><td>6</td><td>-53</td><td>Observed 4 nearby AP beacons</td><td>scan, wifi</td><td><span class="meta-chip">source=serial</span></td></tr>
+<tr><td>2026-04-22T08:30:38+00:00</td><td>info</td><td>esp32-lab-01</td><td>wifi_scan</td><td>11</td><td>-58</td><td>Observed 2 nearby AP beacons</td><td>scan, wifi</td><td><span class="meta-chip">source=serial</span></td></tr>
+<tr><td>2026-04-22T08:31:12+00:00</td><td>warn</td><td>esp32-lab-01</td><td>status</td><td>-</td><td>-</td><td>Battery dipped below target threshold</td><td>battery</td><td><span class="meta-chip">battery_v=3.72</span> <span class="meta-chip">source=serial</span></td></tr>
+<tr><td>2026-04-22T08:31:45+00:00</td><td>notice</td><td>esp32-lab-02</td><td>boot</td><td>-</td><td>-</td><td>Boot complete</td><td>system</td><td><span class="meta-chip">firmware=0.1.0</span> <span class="meta-chip">source=replay</span></td></tr>
+<tr><td>2026-04-22T08:32:05+00:00</td><td>info</td><td>esp32-lab-02</td><td>wifi_scan</td><td>6</td><td>-61</td><td>Observed 5 nearby AP beacons</td><td>scan, wifi</td><td><span class="meta-chip">source=replay</span></td></tr>
+<tr><td>2026-04-22T08:32:40+00:00</td><td>error</td><td>esp32-lab-02</td><td>status</td><td>-</td><td>-</td><td>Radio recovered after watchdog reset</td><td>radio, system</td><td><span class="meta-chip">source=replay</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

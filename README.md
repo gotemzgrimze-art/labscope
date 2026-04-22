@@ -1,5 +1,9 @@
 # labscope
 
+[![CI](https://github.com/gotemzgrimze-art/labscope/actions/workflows/ci.yml/badge.svg)](https://github.com/gotemzgrimze-art/labscope/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-0f766e.svg)](LICENSE)
+[![Rust](https://img.shields.io/badge/rust-1.94%2B-102033.svg)](https://www.rust-lang.org/)
+
 `labscope` is a Rust CLI for passive device telemetry, scan-session parsing, and
 operator-friendly reporting.
 
@@ -31,6 +35,43 @@ cargo run -- tail examples/session.jsonl --lines 5 --contains battery
 cargo run -- export-html examples/session.jsonl report.html
 cat examples/session.jsonl | cargo run -- ingest -
 ```
+
+## Example Output
+
+Text summary from the checked-in fixture:
+
+```text
+events: 8
+unique_devices: 2
+unique_event_types: 3
+warnings_or_errors: 2
+out_of_order_timestamps: 0
+active_span_seconds: 160
+first_seen: 2026-04-22T08:30:00+00:00
+last_seen: 2026-04-22T08:32:40+00:00
+devices:
+  - esp32-lab-01: 5
+  - esp32-lab-02: 3
+events_by_type:
+  - boot: 2
+  - status: 2
+  - wifi_scan: 4
+events_by_severity:
+  - error: 1
+  - info: 4
+  - notice: 2
+  - warn: 1
+events_by_channel:
+  - 1: 1
+  - 11: 1
+  - 6: 2
+  - n/a: 4
+```
+
+GitHub-friendly demo assets:
+
+- [docs/sample-summary.txt](docs/sample-summary.txt)
+- [docs/sample-report.html](docs/sample-report.html)
 
 ## Event Format
 
@@ -67,8 +108,13 @@ Fields:
 3. Add a live terminal dashboard with `ratatui`.
 4. Add GitHub release binaries for Linux/macOS.
 
+## GitHub Notes
+
+- CI runs `fmt`, `clippy`, and `test` on every push and pull request.
+- `Cargo.lock` is committed because this is an application crate.
+- The sample fixture and report are checked in so the repo is explorable without setup.
+
 ## Safety
 
 This repo is aimed at passive logging and defensive visibility on systems or
 networks you own or are explicitly authorized to assess.
-
