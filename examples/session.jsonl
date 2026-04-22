@@ -1,0 +1,8 @@
+{"ts":"2026-04-22T08:30:00Z","device_id":"esp32-lab-01","event":"boot","severity":"notice","message":"Boot complete","tags":["system"],"meta":{"firmware":"0.1.0","source":"serial"}}
+{"ts":"2026-04-22T08:30:10Z","device_id":"esp32-lab-01","event":"wifi_scan","severity":"info","channel":1,"signal_dbm":-49,"message":"Observed 3 nearby AP beacons","tags":["scan","wifi"],"meta":{"source":"serial"}}
+{"ts":"2026-04-22T08:30:24Z","device_id":"esp32-lab-01","event":"wifi_scan","severity":"info","channel":6,"signal_dbm":-53,"message":"Observed 4 nearby AP beacons","tags":["scan","wifi"],"meta":{"source":"serial"}}
+{"ts":"2026-04-22T08:30:38Z","device_id":"esp32-lab-01","event":"wifi_scan","severity":"info","channel":11,"signal_dbm":-58,"message":"Observed 2 nearby AP beacons","tags":["scan","wifi"],"meta":{"source":"serial"}}
+{"ts":"2026-04-22T08:31:12Z","device_id":"esp32-lab-01","event":"status","severity":"warn","message":"Battery dipped below target threshold","tags":["battery"],"meta":{"battery_v":"3.72","source":"serial"}}
+{"ts":"2026-04-22T08:31:45Z","device_id":"esp32-lab-02","event":"boot","severity":"notice","message":"Boot complete","tags":["system"],"meta":{"firmware":"0.1.0","source":"replay"}}
+{"ts":"2026-04-22T08:32:05Z","device_id":"esp32-lab-02","event":"wifi_scan","severity":"info","channel":6,"signal_dbm":-61,"message":"Observed 5 nearby AP beacons","tags":["scan","wifi"],"meta":{"source":"replay"}}
+{"ts":"2026-04-22T08:32:40Z","device_id":"esp32-lab-02","event":"status","severity":"error","message":"Radio recovered after watchdog reset","tags":["radio","system"],"meta":{"source":"replay"}}
