@@ -3,20 +3,17 @@ use clap::ValueEnum;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, ValueEnum)]
+#[derive(
+    Debug, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, ValueEnum,
+)]
 #[serde(rename_all = "snake_case")]
 pub enum Severity {
     Trace,
+    #[default]
     Info,
     Notice,
     Warn,
     Error,
-}
-
-impl Default for Severity {
-    fn default() -> Self {
-        Self::Info
-    }
 }
 
 impl Severity {
@@ -48,4 +45,3 @@ pub struct SessionEvent {
     #[serde(default)]
     pub meta: BTreeMap<String, String>,
 }
-

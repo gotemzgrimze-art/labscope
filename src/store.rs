@@ -96,8 +96,8 @@ pub fn load_events(path: &Path) -> Result<Vec<SessionEvent>> {
         return parse_events(stdin.lock());
     }
 
-    let file =
-        File::open(path).with_context(|| format!("failed to read input file: {}", path.display()))?;
+    let file = File::open(path)
+        .with_context(|| format!("failed to read input file: {}", path.display()))?;
     parse_events(BufReader::new(file))
 }
 
@@ -121,7 +121,7 @@ pub fn summarize(events: &[SessionEvent]) -> SessionSummary {
     let mut previous_ts: Option<DateTime<Utc>> = None;
 
     for event in events {
-        let ts = event.ts.clone();
+        let ts = event.ts;
 
         *by_device.entry(event.device_id.clone()).or_insert(0) += 1;
         *by_event.entry(event.event.clone()).or_insert(0) += 1;
@@ -149,14 +149,14 @@ pub fn summarize(events: &[SessionEvent]) -> SessionSummary {
                 out_of_order_timestamps += 1;
             }
         }
-        previous_ts = Some(ts.clone());
+        previous_ts = Some(ts);
 
         first_ts = Some(match first_ts {
-            Some(current) => current.min(ts.clone()),
-            None => ts.clone(),
+            Some(current) => current.min(ts),
+            None => ts,
         });
         last_ts = Some(match last_ts {
-            Some(current) => current.max(ts.clone()),
+            Some(current) => current.max(ts),
             None => ts,
         });
     }

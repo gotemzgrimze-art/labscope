@@ -350,4 +350,3 @@ fn html_escape(input: &str) -> String {
         .replace('"', "&quot;")
         .replace('\'', "&#39;")
 }
-

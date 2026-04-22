@@ -29,7 +29,15 @@ fn event(
 #[test]
 fn summary_counts_devices_events_and_warnings() {
     let events = vec![
-        event(0, "esp32-a", "wifi_scan", Severity::Info, Some(1), "normal scan", &["scan"]),
+        event(
+            0,
+            "esp32-a",
+            "wifi_scan",
+            Severity::Info,
+            Some(1),
+            "normal scan",
+            &["scan"],
+        ),
         event(
             3,
             "esp32-a",
@@ -65,7 +73,15 @@ fn summary_counts_devices_events_and_warnings() {
 #[test]
 fn filter_matches_case_insensitive_fields_and_tags() {
     let events = vec![
-        event(0, "esp32-a", "wifi_scan", Severity::Info, Some(1), "normal scan", &["scan"]),
+        event(
+            0,
+            "esp32-a",
+            "wifi_scan",
+            Severity::Info,
+            Some(1),
+            "normal scan",
+            &["scan"],
+        ),
         event(
             4,
             "esp32-b",
@@ -95,8 +111,24 @@ fn filter_matches_case_insensitive_fields_and_tags() {
 #[test]
 fn summary_detects_out_of_order_timestamps() {
     let events = vec![
-        event(10, "esp32-a", "wifi_scan", Severity::Info, Some(1), "late first", &[]),
-        event(5, "esp32-a", "wifi_scan", Severity::Info, Some(6), "out of order", &[]),
+        event(
+            10,
+            "esp32-a",
+            "wifi_scan",
+            Severity::Info,
+            Some(1),
+            "late first",
+            &[],
+        ),
+        event(
+            5,
+            "esp32-a",
+            "wifi_scan",
+            Severity::Info,
+            Some(6),
+            "out of order",
+            &[],
+        ),
     ];
 
     let summary = summarize(&events);
@@ -123,4 +155,3 @@ fn html_report_escapes_untrusted_content() {
     assert!(html.contains("&lt;script&gt;alert(1)&lt;/script&gt;"));
     assert!(!html.contains("<script>alert(1)</script>"));
 }
-
